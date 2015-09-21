@@ -5,3 +5,6 @@
 *.hex
 *.lst
 *.map
+*.pyc
+.lock-waf*
+build/*
