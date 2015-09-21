@@ -25,7 +25,7 @@ OBJCOPY=arm-none-eabi-objcopy
 OBJDUMP=arm-none-eabi-objdump
 SIZE=arm-none-eabi-size
 
-CFLAGS  = -Wall -g -std=c99 -Os  
+CFLAGS  = -Wall -g -std=c99 -Os
 #CFLAGS += -mlittle-endian -mthumb -mcpu=cortex-m0 -march=armv6s-m
 CFLAGS += -mlittle-endian -mcpu=cortex-m0  -march=armv6-m -mthumb
 CFLAGS += -ffunction-sections -fdata-sections
@@ -44,7 +44,7 @@ CFLAGS += -include $(STD_PERIPH_LIB)/stm32f0xx_conf.h
 
 SRCS += Device/startup_stm32f0xx.s # add startup file to build
 
-# need if you want to build with -DUSE_CMSIS 
+# need if you want to build with -DUSE_CMSIS
 #SRCS += stm32f0_discovery.c
 #SRCS += stm32f0_discovery.c stm32f0xx_it.c
 
@@ -67,12 +67,12 @@ $(PROJ_NAME).elf: $(SRCS)
 	$(OBJCOPY) -O binary $(PROJ_NAME).elf $(PROJ_NAME).bin
 	$(OBJDUMP) -St $(PROJ_NAME).elf >$(PROJ_NAME).lst
 	$(SIZE) $(PROJ_NAME).elf
-	
+
 program: $(PROJ_NAME).bin
 	openocd -f $(OPENOCD_BOARD_DIR)/stm32f0discovery.cfg -f $(OPENOCD_PROC_FILE) -c "stm_flash `pwd`/$(PROJ_NAME).bin" -c shutdown
 
 clean:
-	find ./ -name '*~' | xargs rm -f	
+	find ./ -name '*~' | xargs rm -f
 	rm -f *.o
 	rm -f $(PROJ_NAME).elf
 	rm -f $(PROJ_NAME).hex

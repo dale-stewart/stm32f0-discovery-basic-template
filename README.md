@@ -37,7 +37,7 @@ If you have OpenOCD installed 'make program' can be used to flash the .bin file 
 
     ./bootstrap
     ./configure --prefix=/usr --enable-maintainer-mode --enable-stlink
-    make 
+    make
     sudo make install
 
 If there is an error finding the .cfg file, please double-check the OPENOCD_BOARD_DIR constant at the top of the Makefile (in this template directory, not in OpenOCD).
