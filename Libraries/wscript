@@ -1,18 +1,22 @@
 def build(bld):
+    includes = ['.',
+                'CMSIS/Include',
+                'CMSIS/Device/ST/STM32F0xx/Include',
+                'STM32F0xx_StdPeriph_Driver/inc']
+
+    cflags = ['-g',
+              '-O2',
+              '-ffreestanding',
+              '-nostdlib',
+              '-Werror',
+              '-Wall',
+              '-mlittle-endian',
+              '-mcpu=cortex-m0',
+              '-march=armv6-m',
+              '-mthumb',
+              '-includestm32f0xx_conf.h']
+
     bld.stlib(source=bld.path.ant_glob('STM32F0xx_StdPeriph_Driver/src/*.c'),
-              includes=['.',
-                        'CMSIS/Include',
-                        'CMSIS/Device/ST/STM32F0xx/Include',
-                        'STM32F0xx_StdPeriph_Driver/inc'],
-              cflags = ['-g',
-                        '-O2',
-                        '-ffreestanding',
-                        '-nostdlib',
-                        '-Werror',
-                        '-Wall',
-                        '-mlittle-endian',
-                        '-mcpu=cortex-m0',
-                        '-march=armv6-m',
-                        '-mthumb',
-                        '-includestm32f0xx_conf.h'],
+              includes = includes,
+              cflags = cflags,
               target='stm32f0')

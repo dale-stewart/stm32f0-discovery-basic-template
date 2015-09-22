@@ -8,6 +8,8 @@ def build(bld):
     bld.recurse('Libraries')
 
     cflags =  ['-std=c11',
+               '-Werror',
+               '-Wall',
                '-g',
                '-mlittle-endian',
                '-mcpu=cortex-m0',
