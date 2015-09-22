@@ -12,7 +12,7 @@ def build(bld):
                         '-Wall',
                         '-mlittle-endian',
                         '-mcpu=cortex-m0',
-                        '-march=armv6s-m',
+                        '-march=armv6-m',
                         '-mthumb',
                         '-includestm32f0xx_conf.h'],
               target='stm32f0')
