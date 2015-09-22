@@ -24,9 +24,7 @@ def build(bld):
                            '-mthumb',
                            '-ffunction-sections',
                            '-fdata-sections',
-                           '-includestm32f0xx_conf.h',
-                           '-Wl,--gc-sections',
-                           '-Wl,-Map=main.map',
+                           '-includestm32f0xx_conf.h'
                            ],
 
                 linkflags=['-std=c99',
