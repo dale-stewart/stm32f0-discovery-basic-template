@@ -24,3 +24,6 @@ def configure(conf):
     conf.cc_load_tools()
     conf.cc_add_flags()
     conf.link_add_flags()
+    v = conf.env
+    v['SHLIB_MARKER']        = []
+    v['STLIB_MARKER']        = []

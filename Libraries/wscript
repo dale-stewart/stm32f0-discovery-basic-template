@@ -1,30 +1,18 @@
-def options(opt):
-    opt.load('arm-none-eabi-cc', tooldir='.')
-
-def configure(conf):
-    conf.load('arm-none-eabi-cc', tooldir='.')
-
-    flags =  ['-std=c11',
-              '-g',
-              '-ffreestanding',
-              '-nostdlib',
-              '-Werror',
-              '-Wall',
-              '-mlittle-endian',
-              '-mcpu=cortex-m0',
-              '-march=armv6-m',
-              '-mthumb',
-              '-ffunction-sections',
-              '-fdata-sections',
-              '-Wl,--gc-sections',
-              '-includestm32f0xx_conf.h']
-
-    conf.env.append_value('CFLAGS', flags)
-
 def build(bld):
     bld.stlib(source=bld.path.ant_glob('STM32F0xx_StdPeriph_Driver/src/*.c'),
               includes=['.',
                         'CMSIS/Include',
                         'CMSIS/Device/ST/STM32F0xx/Include',
                         'STM32F0xx_StdPeriph_Driver/inc'],
+              cflags = ['-g',
+                        '-O2',
+                        '-ffreestanding',
+                        '-nostdlib',
+                        '-Werror',
+                        '-Wall',
+                        '-mlittle-endian',
+                        '-mcpu=cortex-m0',
+                        '-march=armv6s-m',
+                        '-mthumb',
+                        '-includestm32f0xx_conf.h'],
               target='stm32f0')
