@@ -36,6 +36,22 @@ def build(bld):
                 target='main.elf',
                 use='stm32f0')
 
+    bld(source = 'main.elf',
+        target = 'main.hex',
+        rule = 'arm-none-eabi-objcopy -O ihex ${SRC} ${TGT}')
+
+    bld(source = 'main.elf',
+        target = 'main.bin',
+        rule = 'arm-none-eabi-objcopy -O binary ${SRC} ${TGT}')
+
+    bld(source = 'main.elf',
+        target = 'main.lst',
+        rule = 'arm-none-eabi-objdump -St ${SRC} > ${TGT}')
+
+    bld(source = 'main.elf',
+        target = 'main.size.txt',
+        rule = 'arm-none-eabi-size ${SRC} > ${TGT}')
+
 from waflib import TaskGen
 
 @TaskGen.extension('.s')
