@@ -52,6 +52,10 @@ def build(bld):
         target = 'main.size.txt',
         rule = 'arm-none-eabi-size ${SRC} > ${TGT}')
 
+def program(ctx):
+    ctx.exec_command('openocd -f board/stm32f0discovery.cfg -f extra/stm32f0-openocd.cfg -c "stm_flash `pwd`/build/main.bin" -c shutdown')
+
+
 from waflib import TaskGen
 
 @TaskGen.extension('.s')
